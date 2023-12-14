@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Display</title>
+    <style>
+       body,
+      html {
+        margin: 0;
+      }
+      .card {
+        padding: 12px 0px 12px 18px;
+        display: flex;
+        width: 290px;
+         background-color: white
+      ;
+      
+        position: relative;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 100%;
+        border-radius: 4px 0 0 4px;
+        background-color: #00b094;
+      }
+
+      .title {
+        width: 132px;
+        height: 13px;
+        padding-top: 5px;
+        font-family: "Rubik", sans-serif;
+        font-size: 10px;
+        font-weight: 800;
+        line-height: 13px;
+        letter-spacing: 0;
+        text-align: left;
+        color: #002953;
+      }
+
+      .content-container {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 8px;
+        justify-content: flex-start;
+        justify-content: flex-start;
+      }
+
+      .sub-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .label1 {
+        font-family: "Rubik", sans-serif;
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 14px;
+        letter-spacing: 0.16px;
+        text-align: left;
+        color: #666666;
+      }
+
+      .value1 {
+        font-family: "Rubik", sans-serif;
+        font-size: 9.5px;
+        font-weight: 800;
+        line-height: 14px;
+        letter-spacing: 0.16px;
+        text-align: left;
+        color: #002953;
+      }
+
+      .label2 {
+        font-family: "Rubik", sans-serif;
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 14px;
+        letter-spacing: 0.16px;
+        text-align: left;
+        color: #666666;
+      }
+
+      .value2 {
+        font-family: "Rubik", sans-serif;
+        font-size: 10px;
+        font-weight: 800;
+        line-height: 14px;
+        letter-spacing: 0.16px;
+        text-align: left;
+        color: #002953;
+      }
+
+      .label3 {
+        font-family: "Rubik", sans-serif;
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 14px;
+        letter-spacing: 0.16px;
+        text-align: left;
+        color: #666666;
+      }
+
+      .value3 {
+        font-family: "Rubik", sans-serif;
+        font-size: 10px;
+        font-weight: 800;
+        line-height: 14px;
+        letter-spacing: 0.16px;
+        text-align: left;
+        color: #002953;
+      }
+    </style>
+</head>
+
+<body>
+    <div class="card" id="dynamicCard">
+        <div class="title-container">
+            <div class="title" id="cardTitle"></div>
+        </div>
+        <div class="content-container">
+            <div class="sub-container">
+                <div class="label1" id="label1"></div>
+                <div class="value1" id="value1"></div>
+            </div>
+            <div class="sub-container">
+                <div class="label2" id="label2"></div>
+                <div class="value2" id="value2"></div>
+            </div>
+            <div class="sub-container">
+                <div class="label3" id="label3"></div>
+                <div class="value3" id="value3"></div>
+            </div>
+        </div>
+        <div class="border"></div>
+    </div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function updateCardContent() {
+            var title = getParameterByName('title') || '';
+            var label1 = getParameterByName('label1') || '';
+            var value1 = getParameterByName('value1') || '';
+            var label2 = getParameterByName('label2') || '';
+            var value2 = getParameterByName('value2') || '';
+            var label3 = getParameterByName('label3') || '';
+            var value3 = getParameterByName('value3') || '';
+
+            document.getElementById('cardTitle').innerHTML = title;
+            document.getElementById('label1').innerHTML = label1;
+            document.getElementById('value1').innerHTML = value1;
+            document.getElementById('label2').innerHTML = label2;
+            document.getElementById('value2').innerHTML = value2;
+            document.getElementById('label3').innerHTML = label3;
+            document.getElementById('value3').innerHTML = value3;
+        }
+
+        window.addEventListener("load", updateCardContent);
+    </script>
+</body>
+
+</html>
