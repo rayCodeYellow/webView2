@@ -146,37 +146,47 @@
         <div class="border"></div>
     </div>
 
-    <script>
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, '\\$&');
-            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  <script>
+    const params = {};
+
+    function setQueryParams() {
+        let queryString = window.location.search;
+        if (queryString) {
+            queryString = queryString.replace('?', '').trim();
+        } else {
+            queryString = '';
         }
+        queryString = queryString.split("&").filter(v => v);
 
-        function updateCardContent() {
-            var title = getParameterByName('title') || '';
-            var label1 = getParameterByName('label1') || '';
-            var value1 = getParameterByName('value1') || '';
-            var label2 = getParameterByName('label2') || '';
-            var value2 = getParameterByName('value2') || '';
-            var label3 = getParameterByName('label3') || '';
-            var value3 = getParameterByName('value3') || '';
-
-            document.getElementById('cardTitle').innerHTML = title;
-            document.getElementById('label1').innerHTML = label1;
-            document.getElementById('value1').innerHTML = value1;
-            document.getElementById('label2').innerHTML = label2;
-            document.getElementById('value2').innerHTML = value2;
-            document.getElementById('label3').innerHTML = label3;
-            document.getElementById('value3').innerHTML = value3;
+        for (const param of queryString) {
+            const [key, value] = param.split("=");
+            params[key] = decodeURIComponent(value.replace(/\+/g, ' '));
         }
+    }
 
-        window.addEventListener("load", updateCardContent);
-    </script>
+    function updateCardContent() {
+        setQueryParams();
+
+        var title = params['title'] || '';
+        var label1 = params['label1'] || '';
+        var value1 = params['value1'] || '';
+        var label2 = params['label2'] || '';
+        var value2 = params['value2'] || '';
+        var label3 = params['label3'] || '';
+        var value3 = params['value3'] || '';
+
+        document.getElementById('cardTitle').innerHTML = title;
+        document.getElementById('label1').innerHTML = label1;
+        document.getElementById('value1').innerHTML = value1;
+        document.getElementById('label2').innerHTML = label2;
+        document.getElementById('value2').innerHTML = value2;
+        document.getElementById('label3').innerHTML = label3;
+        document.getElementById('value3').innerHTML = value3;
+    }
+
+    window.addEventListener("load", updateCardContent);
+</script>
+
 </body>
 
 </html>
