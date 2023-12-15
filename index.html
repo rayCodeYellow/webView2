@@ -146,7 +146,7 @@
         <div class="border"></div>
     </div>
 
-  <script>
+ <script>
     const params = {};
 
     function setQueryParams() {
@@ -156,12 +156,11 @@
         } else {
             queryString = '';
         }
-        queryString = queryString.split("&").filter(v => v);
 
-        for (const param of queryString) {
-            const [key, value] = param.split("=");
-            params[key] = decodeURIComponent(value.replace(/\+/g, ' '));
-        }
+        const searchParams = new URLSearchParams(queryString);
+        searchParams.forEach((value, key) => {
+            params[key] = value;
+        });
     }
 
     function updateCardContent() {
@@ -186,6 +185,7 @@
 
     window.addEventListener("load", updateCardContent);
 </script>
+
 
 </body>
 
