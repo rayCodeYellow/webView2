@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +10,7 @@
       html {
         margin: 0;
       }
-
      
-
       .card {
         padding: 12px 0px 12px 18px;
         display: flex;
@@ -23,7 +20,6 @@
         flex-direction: column;
         gap: 10px;
       }
-
       .card::before {
         content: "";
         position: absolute;
@@ -34,7 +30,6 @@
         border-radius: 4px 0 0 4px;
         background-color: #00b094;
       }
-
       .title {
         width: 132px;
         height: 13px;
@@ -47,7 +42,6 @@
         text-align: left;
         color: #002953;
       }
-
       .content-container {
         display: grid;
         grid-template-columns: 1.5fr 1fr 1fr;
@@ -55,13 +49,11 @@
         justify-content: flex-start;
         justify-content: flex-start;
       }
-
       .sub-container {
         display: flex;
         flex-direction: column;
         gap: 2px;
       }
-
       .label1 {
         font-family: "Rubik", sans-serif;
         font-size: 9px;
@@ -71,7 +63,6 @@
         text-align: left;
         color: #666666;
       }
-
       .value1 {
         font-family: "Rubik", sans-serif;
         font-size: 10px;
@@ -81,7 +72,6 @@
         text-align: left;
         color: #002953;
       }
-
       .label2 {
         font-family: "Rubik", sans-serif;
         font-size: 9px;
@@ -91,7 +81,6 @@
         text-align: left;
         color: #666666;
       }
-
       .value2 {
         font-family: "Rubik", sans-serif;
         font-size: 10px;
@@ -101,7 +90,6 @@
         text-align: left;
         color: #002953;
       }
-
       .label3 {
         font-family: "Rubik", sans-serif;
         font-size: 9px;
@@ -111,7 +99,6 @@
         text-align: left;
         color: #666666;
       }
-
       .value3 {
         font-family: "Rubik", sans-serif;
         font-size: 10px;
@@ -123,7 +110,6 @@
       }
     </style>
 </head>
-
 <body>
     <div class="card" id="dynamicCard">
         <div class="title-container">
@@ -145,35 +131,18 @@
         </div>
         <div class="border"></div>
     </div>
-
  <script>
-    const params = {};
-
-    function setQueryParams() {
-        let queryString = window.location.search;
-        if (queryString) {
-            queryString = queryString.replace('?', '').trim();
-        } else {
-            queryString = '';
-        }
-
-        const searchParams = new URLSearchParams(queryString);
-        searchParams.forEach((value, key) => {
-            params[key] = value;
-        });
-    }
-
+ 
+    const query = new URLSearchParams(window.location.search);
     function updateCardContent() {
-        setQueryParams();
-
-        var title = params['title'] || '';
-        var label1 = params['label1'] || '';
-        var value1 = params['value1'] || '';
-        var label2 = params['label2'] || '';
-        var value2 = params['value2'] || '';
-        var label3 = params['label3'] || '';
-        var value3 = params['value3'] || '';
-
+       
+        var title = query.get('title') || '';
+        var label1 = query.get('label1') || '';
+        var value1 = query.get('value1') || '';
+        var label2 = query.get('label2') || '';
+        var value2 = query.get('value2') || '';
+        var label3 = query.get('label3') || '';
+        var value3 = query.get('value3') || '';
         document.getElementById('cardTitle').innerHTML = title;
         document.getElementById('label1').innerHTML = label1;
         document.getElementById('value1').innerHTML = value1;
@@ -182,11 +151,7 @@
         document.getElementById('label3').innerHTML = label3;
         document.getElementById('value3').innerHTML = value3;
     }
-
     window.addEventListener("load", updateCardContent);
 </script>
-
-
 </body>
-
 </html>
