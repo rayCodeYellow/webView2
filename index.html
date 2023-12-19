@@ -154,7 +154,14 @@
 
         window.addEventListener("load", () => {
             updateCardContent();
+    });
 
+        
+        window.parent.postMessage(JSON.stringify({
+            event_code: 'ym-client-event',
+            data: "message"
+        }), '*');
+        
             // Integrated script
             function changeTitleSize() {
                 try {
@@ -182,12 +189,8 @@
                     changeTitleSize();
                 }
             });
-        });
+    
 
-        window.parent.postMessage(JSON.stringify({
-            event_code: 'ym-client-event',
-            data: "null"
-        }), '*');
     </script>
 </body>
 </html>
