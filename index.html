@@ -36,17 +36,23 @@
         background-color: #00b094;
       }
 
-      .title {
-        width: 250px;
-        padding-top: 5px;
-        font-family: "Rubik", sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        line-height: 13px;
-        letter-spacing: 0;
-        text-align: left;
-        color: #002953;
-      }
+   
+.title {
+    width: 250px;
+    padding-top: 5px;
+    font-family: "Rubik", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 13px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #002953;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to three lines */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
 
       .content-container {
         display: grid;
