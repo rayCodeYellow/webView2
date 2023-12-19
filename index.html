@@ -318,7 +318,7 @@
             }), '*');
 
         
-        function changeTitleSize() {
+     function changeTitleSize() {
         try {
           var frameDocument = window.frames && window.frames.ymIframe && window.frames.ymIframe.document;
           var fromThemDivsWithWebview = frameDocument.querySelectorAll('.from-them .webview:not(.background-remove)');
@@ -339,11 +339,10 @@
         try {
           data1 = JSON.parse(eventdata);
         } catch (error) {}
-        if (data1 && data1.event_code && data1.event_code === 'ym-client-event') {
+        if (data1 && data1.event_code && data1.event_code === 'message-received') {
           changeTitleSize();
         }
       });
-
 
 </script>
 </body>
