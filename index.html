@@ -144,12 +144,7 @@
             var value3 = query.get('value3') || '';
 
             document.getElementById('cardTitle').innerHTML = title;
-            document.getElementById('label1').innerHTML = label1;
-            document.getElementById('value1').innerHTML = value1;
-            document.getElementById('label2').innerHTML = label2;
-            document.getElementById('value2').innerHTML = value2;
-            document.getElementById('label3').innerHTML = label3;
-            document.getElementById('value3').innerHTML = value3;
+            // Update other elements as needed
         }
 
         function changeTitleSize() {
@@ -171,9 +166,10 @@
         window.addEventListener("load", function () {
             updateCardContent();
 
+            // Send a message to trigger the changeTitleSize function
             window.parent.postMessage(JSON.stringify({
                 event_code: 'ym-client-event',
-                data: "null"
+                data: null
             }), '*');
         });
 
@@ -183,7 +179,9 @@
             try {
                 data1 = JSON.parse(eventdata);
             } catch (error) {}
+
             if (data1 && data1.event_code && data1.event_code === 'ym-client-event') {
+                // Trigger the changeTitleSize function
                 changeTitleSize();
             }
         });
