@@ -128,6 +128,34 @@
         color: #002953;
       }
     </style>
+     <script>
+        function changeTitleSize() {
+            try {
+                var frameDocument = window.frames && window.frames.ymIframe && window.frames.ymIframe.document;
+                var fromThemDivsWithWebview = frameDocument.querySelectorAll('.from-them .webview:not(.background-remove)');
+                if (fromThemDivsWithWebview && fromThemDivsWithWebview[0]) {
+                    fromThemDivsWithWebview[0].style.background = 'unset';
+                    fromThemDivsWithWebview[0].style.border = 'unset';
+                    fromThemDivsWithWebview[0].style.paddingLeft = '0';
+                    fromThemDivsWithWebview[0].style.paddingRight = '0';
+                    fromThemDivsWithWebview[0].classList.add('background-remove');
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        window.addEventListener('message', (data) => {
+            const eventdata = data && data.data;
+            let data1;
+            try {
+                data1 = JSON.parse(eventdata);
+            } catch (error) {}
+            if (data1 && data1.event_code && data1.event_code === 'message-received') {
+                changeTitleSize();
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -184,31 +212,7 @@
             }), '*');
 
      
-      function changeTitleSize() {
-        try {
-          var frameDocument = window.frames && window.frames.ymIframe && window.frames.ymIframe.document;
-          var fromThemDivsWithWebview = frameDocument.querySelectorAll('.from-them .webview:not(.background-remove)');
-          if (fromThemDivsWithWebview && fromThemDivsWithWebview[0]) {
-            fromThemDivsWithWebview[0].style.background = 'unset';
-            fromThemDivsWithWebview[0].style.border = 'unset';
-            fromThemDivsWithWebview[0].style.paddingLeft = '0';
-            fromThemDivsWithWebview[0].style.paddingRight = '0';
-            fromThemDivsWithWebview[0].classList.add('background-remove');
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      }
-      window.addEventListener('message', (data) => {
-        const eventdata = data && data.data;
-        let data1;
-        try {
-          data1 = JSON.parse(eventdata);
-        } catch (error) {}
-        if (data1 && data1.event_code && data1.event_code === 'message-received') {
-          changeTitleSize();
-        }
-      });
+     
     
 </script>
 
