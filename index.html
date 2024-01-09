@@ -107,21 +107,41 @@
 </head>
 
 <body>
-  <div class="card">
+  <div class="card id="dynamicCard"">
     <div class="content-container">
       <div class="sub-container">
-        <div class="label1">Airtel DTH</div>
-        <div class="value1">7972236634</div>
-        <div class="value2">22 Jun 2023</div>
+        <div class="label1"  id="label1"> </div>
+        <div class="value1"  id="value1"></div>
+        <div class="value2"  id="value2"></div>
       </div>
       <div class="sub-container2">
-        <div class="label2">- ₹ 499.00 </div>
-        <div class="value3">Debited</div>
+        <div class="label2" id="label2"> </div>
+        <div class="value3"id="value3"></div></div>
         <button class="success-button">Success</button>
-    
+       
       </div>
     </div>
   </div>
+  <script>
  
+    const query = new URLSearchParams(window.location.search);
+    function updateCardContent() {
+       
+       
+        var label1 = query.get('label1') || '';
+        var value1 = query.get('value1') || '';
+        var label2 = query.get('label2') || '';
+        var value2 = query.get('value2') || '';
+        
+        var value3 = query.get('value3') || '';
+        
+        document.getElementById('label1').innerHTML = label1;
+        document.getElementById('value1').innerHTML = value1;
+        document.getElementById('label2').innerHTML = label2;
+        document.getElementById('value2').innerHTML = value2;
+        document.getElementById('value3').innerHTML = value3;
+    }
+    window.addEventListener("load", updateCardContent);
+</script>
 </body>
 </html>
