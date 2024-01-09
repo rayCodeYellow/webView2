@@ -1,222 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Display</title>
-    <style>
-      body,
-      html {
-        margin: 0;
-      }
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Display</title>
+  <style>
+    body,
+    html {
+      margin: 0;
+    }
 
-     
+    .card {
+      padding: 12px 0px 12px 18px;
+      display: flex;
+      width: 250px;
+      background-color: white;
+      position: relative;
+      flex-direction: column;
+      gap: 10px;
+      border: 10px solid #def1ff;
+        
+    }
 
-      .card {
-        padding: 12px 0px 12px 18px;
-        display: flex;
-        width: 250px;
-         background-color: white;
-        position: relative;
-        flex-direction: column;
-        gap: 10px;
-        border: 10px solid #def1ff;
-      }
+    .content-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      justify-content: flex-start;
+      justify-content: flex-start;
+      
+    }
 
-      .card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 8px;
-        height: 100%;
-        border-radius: 4px 0 0 4px;
-        background-color: #00b094;
-      }
-
+    .sub-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      
+    }
+ .sub-container2 {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      text-align: right;
    
-.title {
-    width: 250px;
-    padding-top: 5px;
-    font-family: "Rubik", sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 13px;
-    letter-spacing: 0;
-    text-align: left;
-    color: #002953;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limit to three lines */
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-}
+    }
+    .value1,.value2,.value3 {
+      font-family: "Rubik", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: left;
+      color: #666666;
+    }
 
-      .content-container {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr;
-        gap: 8px;
-        justify-content: flex-start;
-        justify-content: flex-start;
-      }
+    .label1 {
+      font-family: "Rubik", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: left;
+      color: #002953;
+    }
+  .label2 {
+      font-family: "Rubik", sans-serif;
+      font-size: 14px;
+      font-weight:600;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: left;
+     color: #999999;
 
-      .sub-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
+    }
 
-      .label1 {
-        font-family: "Rubik", sans-serif;
-        font-size: 9px;
-        font-weight: 500;
-        line-height: 14px;
-        letter-spacing: 0.16px;
-        text-align: left;
-        color: #666666;
-      }
+       .success-button {
+    background-color: rgba(0, 181, 0, 0.35);
+      color: #00B500;
+      padding: 2px 2px;
+      border: none;
+      width:60px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: center;
+      border-radius: 5px; /* Added border-radius for rounded corners */
+    }
+        .fail-button {
+    background-color: #FFE6E6;
 
-      .value1 {
-        font-family: "Rubik", sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        line-height: 14px;
-        letter-spacing: 0.16px;
-        text-align: left;
-        color: #002953;
-      }
-
-      .label2 {
-        font-family: "Rubik", sans-serif;
-        font-size: 9px;
-        font-weight: 500;
-        line-height: 14px;
-        letter-spacing: 0.16px;
-        text-align: left;
-        color: #666666;
-      }
-
-      .value2 {
-        font-family: "Rubik", sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        line-height: 14px;
-        letter-spacing: 0.16px;
-        text-align: left;
-        color: #002953;
-      }
-
-      .label3 {
-        font-family: "Rubik", sans-serif;
-        font-size: 9px;
-        font-weight: 500;
-        line-height: 14px;
-        letter-spacing: 0.16px;
-        text-align: left;
-        color: #666666;
-      }
-
-      .value3 {
-        font-family: "Rubik", sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        line-height: 14px;
-        letter-spacing: 0.16px;
-        text-align: left;
-        color: #002953;
-      }
-    </style>
- 
+      color: #B40000;
+      padding: 2px 2px;
+      border: none;
+      width:60px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: center;
+      border-radius: 5px; /* Added border-radius for rounded corners */
+    }
+  </style>
 </head>
 
 <body>
-    <div class="card" id="dynamicCard">
-        <div class="title-container">
-            <div class="title" id="cardTitle"></div>
-        </div>
-        <div class="content-container">
-            <div class="sub-container">
-                <div class="label1" id="label1"></div>
-                <div class="value1" id="value1"></div>
-            </div>
-            <div class="sub-container">
-                <div class="label2" id="label2"></div>
-                <div class="value2" id="value2"></div>
-            </div>
-            <div class="sub-container">
-                <div class="label3" id="label3"></div>
-                <div class="value3" id="value3"></div>
-            </div>
-        </div>
-        <div class="border"></div>
+  <div class="card">
+    <div class="content-container">
+      <div class="sub-container">
+        <div class="label1">Airtel DTH</div>
+        <div class="value1">7972236634</div>
+        <div class="value2">22 Jun 2023</div>
+      </div>
+      <div class="sub-container2">
+        <div class="label2">- ₹ 499.00 </div>
+        <div class="value3">Debited</div>
+        <button class="success-button">Success</button>
+        <button class="fail-button">Failed</button>
+      </div>
     </div>
-
- <script>
+  </div>
  
-
-    const query = new URLSearchParams(window.location.search);
-
-    function updateCardContent() {
-       
-
-        var title = query.get('title') || '';
-        var label1 = query.get('label1') || '';
-        var value1 = query.get('value1') || '';
-        var label2 = query.get('label2') || '';
-        var value2 = query.get('value2') || '';
-        var label3 = query.get('label3') || '';
-        var value3 = query.get('value3') || '';
-
-        document.getElementById('cardTitle').innerHTML = title;
-        document.getElementById('label1').innerHTML = label1;
-        document.getElementById('value1').innerHTML = value1;
-        document.getElementById('label2').innerHTML = label2;
-        document.getElementById('value2').innerHTML = value2;
-        document.getElementById('label3').innerHTML = label3;
-        document.getElementById('value3').innerHTML = value3;
-    }
-
-    window.addEventListener("load", updateCardContent);
-     window.parent.postMessage(JSON.stringify({
-                event_code: 'ym-client-event',
-                data: "null"
-            }), '*');
-    
-        function changeTitleSize() {
-            try {
-                var frameDocument = window.frames && window.frames.ymIframe && window.frames.ymIframe.document;
-                var fromThemDivsWithWebview = frameDocument.querySelectorAll('.from-them .webview:not(.background-remove)');
-                if (fromThemDivsWithWebview && fromThemDivsWithWebview[0]) {
-                    fromThemDivsWithWebview[0].style.background = 'unset';
-                    fromThemDivsWithWebview[0].style.border = 'unset';
-                    fromThemDivsWithWebview[0].style.paddingLeft = '0';
-                    fromThemDivsWithWebview[0].style.paddingRight = '0';
-                    fromThemDivsWithWebview[0].classList.add('background-remove');
-                }
-            } catch (e) {
-                console.log(e);
-            }
-        }
-
-        window.addEventListener('message', (data) => {
-            const eventdata = data && data.data;
-            let data1;
-            try {
-                data1 = JSON.parse(eventdata);
-            } catch (error) {}
-            if (data1 && data1.event_code && data1.event_code === 'message-received') {
-                changeTitleSize();
-            }
-        });
-    
-     
-     
-    
-</script>
-
-
 </body>
-
 </html>
