@@ -117,8 +117,8 @@
       <div class="sub-container2">
         <div class="label2" id="label2"> </div>
         <div class="value3"id="value3"></div></div>
-        <button class="success-button">Success</button>
-       
+  <button class="success-button" id="status">Success</button>
+        <button class="fail-button" id="status">Failed</button>       
       </div>
     </div>
   </div>
@@ -132,15 +132,22 @@
         var value1 = query.get('value1') || '';
         var label2 = query.get('label2') || '';
         var value2 = query.get('value2') || '';
-        
+        var status = query.get('status') || '';
         var value3 = query.get('value3') || '';
         
         document.getElementById('label1').innerHTML = label1;
         document.getElementById('value1').innerHTML = value1;
         document.getElementById('label2').innerHTML = label2;
         document.getElementById('value2').innerHTML = value2;
-        document.getElementById('value3').innerHTML = value3;
+       if (status.toLowerCase() === 'success') {
+            document.getElementById('sucess').style.display = 'inline-block';
+            document.getElementById('fail').style.display = 'none';
+        } else if (status.toLowerCase() === 'fail') {
+            document.getElementById('sucess').style.display = 'none';
+            document.getElementById('fail').style.display = 'inline-block';
+        }
     }
+    
     window.addEventListener("load", updateCardContent);
 </script>
 </body>
