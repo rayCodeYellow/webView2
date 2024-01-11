@@ -257,14 +257,13 @@
         var label2 = query.get('label2') || '';
         var value2 = query.get('value2') || '';
         var status = query.get('status') || '';
-        var value3 = query.get('value3') || '';
+        var amount = query.get('amount') || '';
         var flag = query.get('flag') === 'true';
 
         document.getElementById('label1').innerHTML = label1;
         document.getElementById('value1').innerHTML = value1;
         document.getElementById('label2').innerHTML = label2;
         document.getElementById('value2').innerHTML = value2;
-        document.getElementById('value3').innerHTML = value3;
 
         // Hide both buttons by default
         document.getElementById('success').style.display = 'none';
@@ -279,13 +278,17 @@
 
         // Display amount with appropriate styling based on the flag
         var value3Element = document.getElementById('value3');
-        value3Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
-        value3Element.innerHTML = `${flag ? '+' : '-'}${Math.abs(parseInt(value3))} 
-            ${flag ? '↗' : '↙'}`;
+        var symbol = flag ? '+' : '-';
+        var arrow = flag ? '↗' : '↙';
+        var color = flag ? '#00B500' : '#B40000';
+
+        value3Element.style.color = color;
+        value3Element.innerHTML = `${symbol}${Math.abs(parseInt(amount))} ${arrow}`;
     }
 
     window.addEventListener("load", updateCardContent);
 </script>
+
 
 
 
