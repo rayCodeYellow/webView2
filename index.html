@@ -104,6 +104,23 @@
       text-align: center;
       border-radius: 5px; /* Added border-radius for rounded corners */
     }
+        .pending-button {
+    background-color: #FFF5DA;
+
+
+      color: #FF8900;
+
+      padding: 2px 2px;
+      border: none;
+      width:60px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: center;
+      border-radius: 5px; /* Added border-radius for rounded corners */
+    }
   </style>
 </head>
 
@@ -120,7 +137,7 @@
         <div class="value3"id="value3"></div>
   <button class="success-button" id="success">Success</button>
 <button class="fail-button" id="fail">Failed</button>
- 
+ <button class="pending-button" id="pending">Pending</button>
       </div>
     </div>
   </div>
@@ -147,12 +164,15 @@
         // Hide both buttons by default
         document.getElementById('success').style.display = 'none';
         document.getElementById('fail').style.display = 'none';
-
+  document.getElementById('pending').style.display = 'none';
         // Check the status and show the corresponding button
         if (status.toLowerCase() === 'success') {
             document.getElementById('success').style.display = 'inline-block';
         } else if (status.toLowerCase() === 'fail') {
             document.getElementById('fail').style.display = 'inline-block';
+        }
+      else if (status.toLowerCase() === 'pending') {
+            document.getElementById('pending').style.display = 'inline-block';
         }
 
         // Update symbol and color based on the flag for label2
