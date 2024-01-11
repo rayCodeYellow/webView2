@@ -123,38 +123,170 @@
       </div>
     </div>
   </div>
-  <script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Display</title>
+  <style>
+    body,
+    html {
+      margin: 0;
+    }
+
+    .card {
+      padding: 12px 0px 12px 18px;
+      display: flex;
+      width: 250px;
+      background-color: white;
+      position: relative;
+      flex-direction: column;
+      gap: 10px;
+      border: 10px solid #def1ff;
+        
+    }
+
+    .content-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      justify-content: flex-start;
+      justify-content: flex-start;
+      
+    }
+
+    .sub-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      
+    }
+ .sub-container2 {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      text-align: right;
+   
+    }
+    .value1,.value2,.value3 {
+      font-family: "Rubik", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: left;
+      color: #666666;
+    }
+
+    .label1 {
+      font-family: "Rubik", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: left;
+      color: #002953;
+    }
+  .label2 {
+      font-family: "Rubik", sans-serif;
+      font-size: 14px;
+      font-weight:600;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: left;
+     color: #999999;
+
+    }
+
+       .success-button {
+    background-color: rgba(0, 181, 0, 0.35);
+      color: #00B500;
+      padding: 2px 2px;
+      border: none;
+      width:60px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: center;
+      border-radius: 5px; /* Added border-radius for rounded corners */
+    }
+        .fail-button {
+    background-color: #FFE6E6;
+
+      color: #B40000;
+      padding: 2px 2px;
+      border: none;
+      width:60px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: 0.16px;
+      text-align: center;
+      border-radius: 5px; /* Added border-radius for rounded corners */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card id="dynamicCard"">
+    <div class="content-container">
+      <div class="sub-container">
+        <div class="label1"  id="label1"> </div>
+        <div class="value1"  id="value1"></div>
+        <div class="value2"  id="value2"></div>
+      </div>
+      <div class="sub-container2">
+        <div class="label2" id="label2"> </div>
+        <div class="value3"id="value3"></div>
+  <button class="success-button" id="success">Success</button>
+<button class="fail-button" id="fail">Failed</button>
  
+      </div>
+    </div>
+  </div>
+<script>
     const query = new URLSearchParams(window.location.search);
 
-function updateCardContent() {
-    var label1 = query.get('label1') || '';
-    var value1 = query.get('value1') || '';
-    var label2 = query.get('label2') || '';
-    var value2 = query.get('value2') || '';
-    var status = query.get('status') || '';
-    var value3 = query.get('value3') || '';
+    function updateCardContent() {
+        var label1 = query.get('label1') || '';
+        var value1 = query.get('value1') || '';
+        var label2 = query.get('label2') || '';
+        var value2 = query.get('value2') || '';
+        var status = query.get('status') || '';
+        var value3 = query.get('value3') || '';
+        var flag = query.get('flag') === 'true';
 
-    document.getElementById('label1').innerHTML = label1;
-    document.getElementById('value1').innerHTML = value1;
-    document.getElementById('label2').innerHTML = label2;
-    document.getElementById('value2').innerHTML = value2;
-    document.getElementById('value3').innerHTML = value3;
+        document.getElementById('label1').innerHTML = label1;
+        document.getElementById('value1').innerHTML = value1;
+        document.getElementById('label2').innerHTML = label2;
+        document.getElementById('value2').innerHTML = value2;
+        document.getElementById('value3').innerHTML = value3;
 
-    // Hide both buttons by default
-    document.getElementById('success').style.display = 'none';
-    document.getElementById('fail').style.display = 'none';
+        // Hide both buttons by default
+        document.getElementById('success').style.display = 'none';
+        document.getElementById('fail').style.display = 'none';
 
-    // Check the status and show the corresponding button
-    if (status.toLowerCase() === 'success') {
-        document.getElementById('success').style.display = 'inline-block';
-    } else if (status.toLowerCase() === 'fail') {
-        document.getElementById('fail').style.display = 'inline-block';
+        // Check the status and show the corresponding button
+        if (status.toLowerCase() === 'success') {
+            document.getElementById('success').style.display = 'inline-block';
+        } else if (status.toLowerCase() === 'fail') {
+            document.getElementById('fail').style.display = 'inline-block';
+        }
+
+        // Display amount with color, symbol, and arrow based on the flag
+        var amountElement = document.getElementById('value3');
+        amountElement.innerHTML = flag ? '+499 ↗' : '-499 ↙';
+        amountElement.style.color = flag ? '#00B500' : '#B40000';
     }
-}
 
-window.addEventListener("load", updateCardContent);
-
+    window.addEventListener("load", updateCardContent);
 </script>
+
+
+
 </body>
 </html>
