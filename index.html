@@ -277,10 +277,11 @@
             document.getElementById('fail').style.display = 'inline-block';
         }
 
-        // Display amount with color, symbol, and arrow based on the flag
-        var amountElement = document.getElementById('value3');
-        amountElement.innerHTML = flag ? '+499 ↗' : '-499 ↙';
-        amountElement.style.color = flag ? '#00B500' : '#B40000';
+        // Display amount with appropriate styling based on the flag
+        var value3Element = document.getElementById('value3');
+        value3Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
+        value3Element.innerHTML = `${flag ? '+' : '-'}${Math.abs(parseInt(value3))} 
+            ${flag ? '↗' : '↙'}`;
     }
 
     window.addEventListener("load", updateCardContent);
