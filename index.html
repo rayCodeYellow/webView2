@@ -151,7 +151,11 @@ function updateCardContent() {
     } else if (status.toLowerCase() === 'fail') {
         document.getElementById('fail').style.display = 'inline-block';
     }
-}
+  var label2Element = document.getElementById('label2');
+        label2Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
+        label2Element.innerHTML = `${flag ? '+' : '-'}${label2} 
+            ${flag ? '↗' : '↙'}`;
+    }
 
 window.addEventListener("load", updateCardContent);
 
