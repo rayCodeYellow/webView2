@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +45,7 @@
       text-align: right;
    
     }
-    .value2,.value3,.value5 {
+    .value1,.value2,.value3 {
       font-family: "Rubik", sans-serif;
       font-size: 10px;
       font-weight: 500;
@@ -54,7 +55,7 @@
       color: #666666;
     }
 
-    .value1 {
+    .label1 {
       font-family: "Rubik", sans-serif;
       font-size: 12px;
       font-weight: 700;
@@ -63,7 +64,7 @@
       text-align: left;
       color: #002953;
     }
-  .value4 {
+  .label2 {
       font-family: "Rubik", sans-serif;
       font-size: 14px;
       font-weight:600;
@@ -110,13 +111,13 @@
   <div class="card id="dynamicCard"">
     <div class="content-container">
       <div class="sub-container">
-        <div class="value1"  id="value1"> </div>
+        <div class="label1"  id="label1"> </div>
+        <div class="value1"  id="value1"></div>
         <div class="value2"  id="value2"></div>
-        <div class="value3"  id="value3"></div>
       </div>
       <div class="sub-container2">
-        <div class="value4" id="value4"> </div>
-        <div class="value5"id="value5"></div>
+        <div class="label2" id="label2"> </div>
+        <div class="value3"id="value3"></div>
   <button class="success-button" id="success">Success</button>
 <button class="fail-button" id="fail">Failed</button>
  
@@ -128,21 +129,19 @@
     const query = new URLSearchParams(window.location.search);
 
 function updateCardContent() {
-  
+    var label1 = query.get('label1') || '';
     var value1 = query.get('value1') || '';
+    var label2 = query.get('label2') || '';
     var value2 = query.get('value2') || '';
-    var value3= query.get('value3') || '';
-   var value3= query.get('value4') || '';
-   var value3= query.get('value5') || '';
     var status = query.get('status') || '';
-        var flag = query.get('flag') === 'true';
+    var value3 = query.get('value3') || '';
 
-   
+    document.getElementById('label1').innerHTML = label1;
     document.getElementById('value1').innerHTML = value1;
+    document.getElementById('label2').innerHTML = label2;
     document.getElementById('value2').innerHTML = value2;
     document.getElementById('value3').innerHTML = value3;
-  document.getElementById('value4').innerHTML = value4; 
-  document.getElementById('value5').innerHTML = value5;
+
     // Hide both buttons by default
     document.getElementById('success').style.display = 'none';
     document.getElementById('fail').style.display = 'none';
@@ -153,14 +152,15 @@ function updateCardContent() {
     } else if (status.toLowerCase() === 'fail') {
         document.getElementById('fail').style.display = 'inline-block';
     }
-  var label2Element = document.getElementById('value4');
+
+  var label2Element = document.getElementById('label2');
         label2Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
         label2Element.innerHTML = `${flag ? '+' : '-'}${value4} 
             ${flag ? '↗' : '↙'}`;
     }
-
 window.addEventListener("load", updateCardContent);
 
 </script>
 </body>
 </html>
+
