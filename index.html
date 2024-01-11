@@ -155,7 +155,7 @@ function updateCardContent() {
 
   var label2Element = document.getElementById('label2');
         label2Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
-        label2Element.innerHTML = `${flag ? '+' : '-'}${value4} 
+        label2Element.innerHTML = `${flag ? '+' : '-'}${label2} 
             ${flag ? '↗' : '↙'}`;
     }
 window.addEventListener("load", updateCardContent);
