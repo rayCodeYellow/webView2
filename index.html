@@ -130,17 +130,20 @@
 
 function updateCardContent() {
     var label1 = query.get('label1') || '';
-    var value1 = query.get('value1') || '';
-    var label2 = query.get('label2') || '';
-    var value2 = query.get('value2') || '';
-    var status = query.get('status') || '';
-    var value3 = query.get('value3') || '';
+        var value1 = query.get('value1') || '';
+        var label2 = query.get('label2') || '';
+        var value2 = query.get('value2') || '';
+        var status = query.get('status') || '';
+        var value3 = query.get('value3') || '';
+        var flag = query.get('flag') === 'true';
 
     document.getElementById('label1').innerHTML = label1;
     document.getElementById('value1').innerHTML = value1;
     document.getElementById('label2').innerHTML = label2;
     document.getElementById('value2').innerHTML = value2;
     document.getElementById('value3').innerHTML = value3;
+      document.getElementById('flag').innerHTML = value3;
+
 
     // Hide both buttons by default
     document.getElementById('success').style.display = 'none';
