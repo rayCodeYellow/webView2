@@ -264,22 +264,18 @@
         document.getElementById('value1').innerHTML = value1;
         document.getElementById('label2').innerHTML = label2;
 
-        // Hide both buttons by default
+       
         document.getElementById('success').style.display = 'none';
         document.getElementById('fail').style.display = 'none';
 
-        // Check the status and show the corresponding button
         if (status.toLowerCase() === 'success') {
             document.getElementById('success').style.display = 'inline-block';
         } else if (status.toLowerCase() === 'fail') {
             document.getElementById('fail').style.display = 'inline-block';
         }
 
-        // Update symbol and color based on the flag for label2
-        var label2Element = document.getElementById('label2');
-        label2Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
-        label2Element.innerHTML = `${flag ? '+' : '-'}${label2} 
-            ${flag ? '↗' : '↙'}`;
+        
+      
     }
 
     window.addEventListener("load", updateCardContent);
