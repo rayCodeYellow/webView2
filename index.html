@@ -125,11 +125,10 @@
     </div>
   </div>
   <script>
- 
     const query = new URLSearchParams(window.location.search);
 
-function updateCardContent() {
-    var label1 = query.get('label1') || '';
+    function updateCardContent() {
+        var label1 = query.get('label1') || '';
         var value1 = query.get('value1') || '';
         var label2 = query.get('label2') || '';
         var value2 = query.get('value2') || '';
@@ -137,33 +136,31 @@ function updateCardContent() {
         var value3 = query.get('value3') || '';
         var flag = query.get('flag') === 'true';
 
-    document.getElementById('label1').innerHTML = label1;
-    document.getElementById('value1').innerHTML = value1;
-    document.getElementById('label2').innerHTML = label2;
-    document.getElementById('value2').innerHTML = value2;
-    document.getElementById('value3').innerHTML = value3;
-      document.getElementById('flag').innerHTML = value3;
+        document.getElementById('label1').innerHTML = label1;
+        document.getElementById('value1').innerHTML = value1;
+        document.getElementById('label2').innerHTML = label2;
 
+        // Hide both buttons by default
+        document.getElementById('success').style.display = 'none';
+        document.getElementById('fail').style.display = 'none';
 
-    // Hide both buttons by default
-    document.getElementById('success').style.display = 'none';
-    document.getElementById('fail').style.display = 'none';
+        // Check the status and show the corresponding button
+        if (status.toLowerCase() === 'success') {
+            document.getElementById('success').style.display = 'inline-block';
+        } else if (status.toLowerCase() === 'fail') {
+            document.getElementById('fail').style.display = 'inline-block';
+        }
 
-    // Check the status and show the corresponding button
-    if (status.toLowerCase() === 'success') {
-        document.getElementById('success').style.display = 'inline-block';
-    } else if (status.toLowerCase() === 'fail') {
-        document.getElementById('fail').style.display = 'inline-block';
-    }
-
-  var label2Element = document.getElementById('label2');
+        // Update symbol and color based on the flag for label2
+        var label2Element = document.getElementById('label2');
         label2Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
         label2Element.innerHTML = `${flag ? '+' : '-'}${label2} 
             ${flag ? '↗' : '↙'}`;
     }
-window.addEventListener("load", updateCardContent);
 
+    window.addEventListener("load", updateCardContent);
 </script>
+
 </body>
 </html>
 
