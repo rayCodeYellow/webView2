@@ -123,21 +123,20 @@
     }
   </style>
 </head>
-
 <body>
-  <div class="card id="dynamicCard"">
+  <div class="card" id="dynamicCard">
     <div class="content-container">
       <div class="sub-container">
-        <div class="label1"  id="label1"> </div>
-        <div class="value1"  id="value1"></div>
-        <div class="value2"  id="value2"></div>
+        <div class="label1" id="label1"></div>
+        <div class="value1" id="value1"></div>
+        <div class="value2" id="value2"></div>
       </div>
       <div class="sub-container2">
-        <div class="label2" id="label2"> </div>
-        <div class="value3"id="value3"></div>
-  <button class="success-button" id="success">Success</button>
-<button class="fail-button" id="fail">Failed</button>
- <button class="pending-button" id="pending">Pending</button>
+        <div class="label2" id="label2"></div>
+        <div class="value3" id="value3"></div>
+        <button class="success-button" id="success"></button>
+        <button class="fail-button" id="fail"></button>
+        <button class="pending-button" id="pending"></button>
       </div>
     </div>
   </div>
@@ -145,46 +144,41 @@
     const query = new URLSearchParams(window.location.search);
 
     function updateCardContent() {
-        var label1 = query.get('label1') || '';
-        var value1 = query.get('value1') || '';
-        var label2 = query.get('label2') || '';
-        var value2 = query.get('value2') || '';
-        var status = query.get('status') || '';
-        var value3 = query.get('value3') || '';
-        var flag = query.get('flag') === 'true';
+      var label1 = query.get('label1') || '';
+      var value1 = query.get('value1') || '';
+      var label2 = query.get('label2') || '';
+      var value2 = query.get('value2') || '';
+      var status = query.get('status') || '';
+      var value3 = query.get('value3') || '';
+      var flag = query.get('flag') === 'true';
 
-        
+      document.getElementById('label1').textContent = label1;
+      document.getElementById('value1').textContent = value1;
+      document.getElementById('label2').textContent = label2;
+      document.getElementById('value2').textContent = value2;
+      document.getElementById('value3').textContent = value3;
 
-      document.getElementById('label1').innerHTML = label1;
-    document.getElementById('value1').innerHTML = value1;
-    document.getElementById('label2').innerHTML = label2;
-    document.getElementById('value2').innerHTML = value2;
-    document.getElementById('value3').innerHTML = value3;
+      // Hide all buttons by default
+      document.getElementById('success').style.display = 'none';
+      document.getElementById('fail').style.display = 'none';
+      document.getElementById('pending').style.display = 'none';
 
-        // Hide both buttons by default
-        document.getElementById('success').style.display = 'none';
-        document.getElementById('fail').style.display = 'none';
-  document.getElementById('pending').style.display = 'none';
-        // Check the status and show the corresponding button
-        if (status.toLowerCase() === 'success') {
-            document.getElementById('success').style.display = 'inline-block';
-        } else if (status.toLowerCase() === 'fail') {
-            document.getElementById('fail').style.display = 'inline-block';
-        }
-      else if (status.toLowerCase() === 'pending') {
-            document.getElementById('pending').style.display = 'inline-block';
-        }
+      // Check the status and show the corresponding button
+      if (status.toLowerCase() === 'success') {
+        document.getElementById('success').style.display = 'inline-block';
+      } else if (status.toLowerCase() === 'fail') {
+        document.getElementById('fail').style.display = 'inline-block';
+      } else if (status.toLowerCase() === 'pending') {
+        document.getElementById('pending').style.display = 'inline-block';
+      }
 
-        // Update symbol and color based on the flag for label2
-        var label2Element = document.getElementById('label2');
-        label2Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
-        label2Element.innerHTML = `${flag ? '+' : '-'}${label2} 
-            ${flag ? '↙' : '↗'}`;
+      // Update symbol and color based on the flag for label2
+      var label2Element = document.getElementById('label2');
+      label2Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
+      label2Element.textContent = `${flag ? '+' : '-'}${label2} ${flag ? '↙' : '↗'}`;
     }
 
     window.addEventListener("load", updateCardContent);
-</script>
-
+  </script>
 </body>
 </html>
-
