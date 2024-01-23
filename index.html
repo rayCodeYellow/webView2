@@ -178,7 +178,10 @@
       label2Element.textContent = `${flag ? '+' : '-'}${label2} ${flag ? '↙' : '↗'}`;
     }
 
-    window.addEventListener("null", updateCardContent);
+  document.addEventListener("DOMContentLoaded", function() {
+  updateCardContent();
+});
+
   </script>
 </body>
 </html>
