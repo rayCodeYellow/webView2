@@ -177,11 +177,13 @@
       label2Element.style.color = flag ? '#00B500' : '#B40000'; // Green or Red color
       label2Element.textContent = `${flag ? '+' : '-'}${label2} ${flag ? '↙' : '↗'}`;
     }
-
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("DOMContentLoaded event fired");
   updateCardContent();
 });
+    window.addEventListener("load", updateCardContent);
 
+ 
   </script>
 </body>
 </html>
